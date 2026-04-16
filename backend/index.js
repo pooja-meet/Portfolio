@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: "Something went wrong" });
 });
 app.get('/',(req,res)=>{
-    console.log('server is running....')
+    res.send('server is running....')
 // server
 const PORT = process.env.PORT || 3000
 
@@ -45,4 +45,5 @@ connectDb().then(() =>
         console.log(`server is running at http://localhost:${PORT}`)
     )
 )
+
 
