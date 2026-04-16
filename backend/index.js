@@ -37,6 +37,7 @@ app.use((err, req, res, next) => {
 });
 app.get('/',(req,res)=>{
     res.send('server is running....')
+})
 // server
 const PORT = process.env.PORT || 3000
 
@@ -45,5 +46,6 @@ connectDb().then(() =>
         console.log(`server is running at http://localhost:${PORT}`)
     )
 )
+
 
 
