@@ -39,24 +39,24 @@ This is my personal portfolio web application built using the **MERN stack (Mong
 
 ## 📸 Preview
 
-(Add your project screenshot here)
+<img width="1890" height="902" alt="image" src="https://github.com/user-attachments/assets/0c6e682e-e73a-49c9-b303-223be8dee8f5" />
+
 
 ---
 
 ## 🌐 Live Demo
 
-(Add your deployed link here — Netlify / Vercel)
-
+https://itsmahi.netlify.app
 ---
 
 ## ⚙️ Installation & Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/pooja-meet/portfolio.git
 
 # Go to project folder
-cd your-repo-name
+cd portfolio
 
 # Install dependencies
 npm install
