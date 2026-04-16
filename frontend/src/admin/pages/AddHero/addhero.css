@@ -1,0 +1,84 @@
+.admin_form {
+    min-width: 100%;
+    min-height: 100%;
+    padding: 20px;
+    color: white;
+}
+
+.admin_form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.admin_form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px rgb(3 1 1 / 50%);
+}
+
+.admin_form input {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: #9b3b12;
+    outline: none;
+
+}
+.admin_form textarea{
+    padding: 10px;
+}
+.admin_form input[type="file"] {
+    padding: 5px;
+    background: #9b3b12;
+    border-radius: 5px;
+    color: white;
+}
+
+.admin_form button {
+    padding: 8px;
+    background: red;
+    color: white;
+    width: 80px;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero_preview {
+    max-width: 620px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    color: #333;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.left_hero {
+    margin: auto;
+    line-height: 30px;
+    width: 40%;
+    text-align: left;
+}
+
+.right_hero {
+    width: 40%;
+    margin: auto;
+}
+
+.right_hero img {
+    border-radius: 50px;
+    width: 100%;
+    height: 50%;
+}

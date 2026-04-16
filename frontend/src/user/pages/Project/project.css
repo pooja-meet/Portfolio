@@ -1,0 +1,112 @@
+.project {
+  padding: 60px 20px;
+  background: #0f172a;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.project h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.project-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border-radius: 20px;
+}
+
+/* ===== CARD (same as skill-card) ===== */
+.project-card {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 rgba(255, 255, 255, 0);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border: 1px solid #3b82f6;
+}
+
+/* ===== IMAGE (same feel as skills) ===== */
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(15, 23, 42, 0.95),
+      rgba(15, 23, 42, 0.6));
+  backdrop-filter: blur(1px);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: left;
+  line-height: 28px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: 0.3s ease;
+  padding: 15px;
+  text-align: left;
+}
+.overlay-desc{
+  color: #3b82f6;
+}
+.project-card:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== LINK BUTTON (simple like skill footer feel) ===== */
+.project-card a {
+  margin-top: 5px;
+  cursor: pointer;
+  color: #3b82f6;
+  text-decoration: none;
+  outline: none;
+}
+
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: 10px 5px;
+  }
+
+  .overlay-title {
+    font-size: 1rem;
+  }
+
+  .overlay-desc {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,149 @@
+.admin_navbar {
+    display: flex;
+    width: 100%;
+    background-color: rgb(62, 61, 58);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.admin_navlogo {
+    font-family: cursive;
+    animation: colorChange 6s ease-in-out infinite;
+    padding: 20px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@keyframes colorChange {
+
+    0%,
+    100% {
+        color: white;
+    }
+
+    50% {
+        color: red;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Desktop */
+.admin_list_Container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.admin_list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.admin_list a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.admin_list a:hover {
+    background-color: red;
+}
+
+.admin_button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: crimson;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.admin_button:hover {
+    background-color: darkred;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px) {
+
+    .admin_navlogo {
+        font-size: 15px;
+    }
+
+    /* Desktop */
+    .admin_list_Container {
+        gap: 40px;
+    }
+
+    .admin_list {
+        gap: 0px;
+    }
+
+    .admin_list a {
+        font-size: 12px;
+    }
+
+
+    .admin_button {
+        font-size: 10px;
+        margin-top: 7px;
+        padding: 5px;
+    }
+
+}
+
+/* Extra small */
+@media (max-width:375px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .admin_list_Container {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgb(62, 61, 58);
+        width: 50vw;
+        height: 80vh;
+        padding: 60px 0;
+
+        flex-direction: column;
+
+        /* 👇 Important for animation */
+        opacity: 0;
+        transform: translateY(-20px);
+        visibility: hidden;
+
+        transition: all 0.4s ease;
+    }
+
+    .admin_list_Container.active {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        display: flex;
+    }
+
+    .admin_list {
+        flex-direction: column;
+        align-items: left;
+    }
+
+    .admin_list a {
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
