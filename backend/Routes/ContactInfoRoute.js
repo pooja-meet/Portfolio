@@ -7,7 +7,7 @@ const verifyToken = require("../Middleware/authMiddleware");
 // ================= GET ALL =================
 router.get("/", async (req, res) => {
   try {
-    const contacts = await ContactInfo.find().sort({ createdAt: -1 });
+    const contacts = await ContactInfo.find().sort({ createdAt: 1 });
     res.json(contacts);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 router.get("/all", async (req, res) => {
   try {
-    const contacts = await ContactInfo.find().sort({ createdAt: -1 });
+    const contacts = await ContactInfo.find().sort({ createdAt: 1 });
     res.json(contacts);
   } catch (err) {
     res.status(500).json({ message: err.message });
