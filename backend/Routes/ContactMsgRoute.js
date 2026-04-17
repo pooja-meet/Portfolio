@@ -8,7 +8,7 @@ const verifyToken = require("../Middleware/authMiddleware");
 // ================= GET ALL MESSAGES (ADMIN) =================
 router.get("/", verifyToken, async (req, res) => {
   try {
-    const messages = await Contact.find().sort({ createdAt: -1 });
+    const messages = await Contact.find().sort({ createdAt: 1 });
     res.json(messages);
   } catch (err) {
     res.status(500).json({ message: err.message });
