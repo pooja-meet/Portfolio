@@ -73,8 +73,8 @@ npm start
 ## 📂 Folder Structure
 
 ```
-/client   → React frontend
-/server   → Node + Express backend
+/frontend   → React frontend
+/backend   → Node + Express backend
 ```
 
 ---
@@ -87,4 +87,4 @@ Feel free to fork this repo and improve it.
 
 ## 📬 Contact
 
-If you want to connect or collaborate, feel free to reach out.
+If you want to connect or collaborate, feel free to reach out. pmrawat10@gmail.com
