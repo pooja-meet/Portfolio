@@ -12,7 +12,7 @@ const upload = multer({ storage });
 /* ================= GET ALL SERVICES ================= */
 router.get("/", async (req, res) => {
   try {
-    const services = await Service.find().sort({ createdAt: -1 });
+    const services = await Service.find().sort({ createdAt: 1 });
     res.json(services);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
 router.get("/all", async (req, res) => {
   try {
-    const services = await Service.find().sort({ createdAt: -1 });
+    const services = await Service.find().sort({ createdAt: 1 });
     res.json(services);
   } catch (err) {
     res.status(500).json({ message: err.message });
