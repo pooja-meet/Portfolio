@@ -1,266 +1,103 @@
-/* ===== MAIN CONTAINER ===== */
-.main_div {
-    padding: 80px 20px;
-    background: #0f172a;
-    color: #fff;
-    min-height: 100vh;
-}
 
-.main_heading {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 70px;
-    font-weight: 600;
-}
+/* ================= 320px MOBILE ================= */
+@media (max-width: 320px) {
 
-/* ===== LAYOUT ===== */
-.contact-page {
-    display: flex;
-    gap: 40px;
-    max-width: 1100px;
-    margin: auto;
-    flex-wrap: wrap;
-}
-
-/* ===== CARDS ===== */
-.left_div,
-.right_div {
-    flex: 1 1 480px;
-    min-width: 280px;
-    background: #1e293b;
-    border-radius: 14px;
-    overflow: hidden;
-    display: inline-flex;
-    flex-direction: column;
-    min-height: 380px;
-}
-
-/* ===== HEADERS ===== */
-.left_heading,
-.right_heading {
-    padding: 16px 22px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-}
-
-.left_heading h2,
-.right_heading h2 {
-    margin: 0;
-    font-size: 1.3rem;
-    color: #fff;
-}
-
-/* ===== LEFT CONTENT ===== */
-.left_container {
-    padding: 20px;
-}
-
-/* ===== INFO BOX (ANIMATION KEEPED) ===== */
-.info-box {
-    margin: 10px auto;
-    background: #0f172a;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #141515;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-
-    animation: shadow 2s ease-in-out infinite alternate;
-}
-
-@keyframes shadow {
-    0% {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    100% {
-        box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
-    }
-}
-
-.description {
-    color: #cbd5f5;
-    line-height: 1.4;
-    font-size: 1rem;
-}
-
-
-/* ===== INFO ITEM ===== */
-.info-item {
-    display: flex;
-    align-items: center;
-}
-
-.info-item .icon {
-    padding: 10px;
-    border-radius: 20px;
-    background: #2563eb;
-}
-
-.info-item .icon_span {
-    padding: 10px;
-    margin-left: 15px;
-}
-
-/* ===== FORM ===== */
-.right_container {
-    padding: 20px;
-}
-
-/* ===== RIGHT BOX (MATCH LEFT INFO-BOX) ===== */
-.form_box {
-    margin: 10px auto;
-    background: #0f172a;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #141515;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-
-    animation: shadowForm 2s ease-in-out infinite alternate;
-}
-
-@keyframes shadowForm {
-    0% {
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    100% {
-        box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
-    }
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 12px 14px;
-    border-radius: 8px;
-    border: 1px solid #334155;
-    background: #0f172a;
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    width: 100%;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-}
-
-.contact-form textarea {
-    min-height: 100px;
-    resize: none;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #d9e0ea;
-    /* 👈 change this to any color */
-}
-
-/* BUTTON */
-.contact-form button {
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.contact-form button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-}
-
-.contact-form button:disabled {
-    background: #64748b;
-}
-
-/* SUCCESS */
-.success_msg {
-    text-align: center;
-    color: #3b82f6;
-    font-size: 0.9rem;
-}
-
-/* LOADING */
-.loading_text {
-    text-align: center;
-    padding: 15px;
-    color: #94a3b8;
-}
-
-/* ================= RESPONSIVE ================= */
-
-/* ✅ TABLET + MOBILE FIX */
-@media (max-width: 768px) {
-
-    /* ===== MAIN CONTAINER ===== */
+    /* MAIN WRAPPER */
     .main_div {
-        padding: 60px 20px;
+        padding: 40px 10px;
     }
 
     .main_heading {
-        font-size: 2rem;
-        margin-bottom: 60px;
+        font-size: 1.4rem;
+        margin-bottom: 25px;
     }
 
+    /* LAYOUT -> SINGLE COLUMN */
+    .contact-page {
+        flex-direction: column;
+        gap: 20px;
+    }
 
-    /* ===== CARDS ===== */
+    /* CARDS */
     .left_div,
     .right_div {
-        border-radius: 15px;
+        flex: 1 1 100%;
+        min-width: 100%;
+        min-height: auto;
     }
 
-    /* ===== HEADERS ===== */
-    .left_heading,
-    .right_heading {
-        padding: 10px 22px;
-    }
-
+    /* HEADINGS */
     .left_heading h2,
     .right_heading h2 {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
-    /* ===== LEFT CONTENT ===== */
-    .left_container {
-        padding: 15px;
-    }
-
-    /* ===== INFO BOX (ANIMATION KEEPED) ===== */
+    /* INFO BOX */
     .info-box {
-        margin: 0px auto;
-        padding: 40px 15px;
-        gap: 15px;
+        padding: 20px 12px;
+        gap: 12px;
     }
 
     .description {
-        line-height: 1.3;
-        font-size: 0.95rem;
-        margin-bottom: 15px;
+        font-size: 0.85rem;
+        line-height: 1.2;
     }
 
-    /* ===== RIGHT BOX (MATCH LEFT INFO-BOX) ===== */
+    /* INFO ITEM */
+    .info-item {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .info-item .icon {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .info-item .icon_span {
+        margin-left: 8px;
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    /* FORM BOX */
+    .form_box {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .contact-form {
+        gap: 10px;
+    }
+
+    /* INPUTS */
+    .contact-form input,
+    .contact-form textarea {
+        padding: 10px;
+        font-size: 0.75rem;
+        border-radius: 2px;
+    }
 
     .contact-form textarea {
-        min-height: 10px;
+        min-height: 80px;
     }
 
+    .left_container,
+    .right_container {
+        padding: 8px;
+    }
 
     /* BUTTON */
     .contact-form button {
-        font-size: 0.90rem;
+        padding: 10px;
+        font-size: 0.8rem;
     }
 
+    /* SHADOW REDUCE (performance) */
+    .info-box,
+    .form_box {
+        animation: none;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
 }
