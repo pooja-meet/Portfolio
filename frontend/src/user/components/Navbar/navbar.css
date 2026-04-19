@@ -4,30 +4,45 @@
     left: 0;
     width: 100%;
     display: flex;
-    padding: 10px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    justify-content: space-around;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #0c0d0e, #364570);
+    justify-content: space-between;
     align-items: center;
     z-index: 1000;
 }
 
+/* LOGO */
 .navlogo h2 {
     font-family: 'Pacifico', cursive;
-    color: #0f172a;
+    color: #dde1ec;
 }
 
-/* hamburger */
+/* HAMBURGER */
 .menu-toggle {
     display: none;
-    font-size: 25px;
+    font-size: 28px;
     color: white;
     cursor: pointer;
+    user-select: none;
+}
+
+/* MENU */
+.list_Container {
+    display: flex;
+    align-items: center;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    gap: 25px;
 }
 
 .list_Container a {
     text-decoration: none;
     color: white;
     position: relative;
+    font-weight: 500;
 }
 
 /* underline animation */
@@ -35,8 +50,8 @@
     content: '';
     position: absolute;
     width: 0%;
-    height: 3px;
-    background: linear-gradient(135deg, #030914, #093cab);
+    height: 2px;
+    background: #0f172a;
     left: 0;
     bottom: -5px;
     transition: 0.3s;
@@ -46,41 +61,42 @@
     width: 100%;
 }
 
-.list {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
-    .navbar {
-        justify-content: space-between;
-    }
 
     .menu-toggle {
         display: block;
     }
 
     .list_Container {
-        position: absolute;
-        top: 50px;
-        right: 0%;
-        min-width: 50vw;
-        min-height: 100vh;
-        background: linear-gradient(67deg, #3b82f6, #2563eb);
-        display: none;
-        text-align: center;
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: linear-gradient(67deg, #0b0b0b, #364570);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 40px;
+
         transition: right 0.4s ease-in-out;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* OPEN STATE */
+    .list_Container.active {
+        right: 0;
+        top: 57px;
     }
 
     .list {
         flex-direction: column;
-        padding: 20px 0;
+        gap: 30px;
     }
 
-    .list_Container.active {
-        display: block;
-        padding: 20px;
+    .list_Container a {
+        font-size: 1.2rem;
     }
 }
