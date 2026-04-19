@@ -17,10 +17,7 @@ const cors = require('cors')
 app.use(express.json())
 
 app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "http://192.168.1.5:5173"
-    ],
+    origin: "https://itsmahi.netlify.app"
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
