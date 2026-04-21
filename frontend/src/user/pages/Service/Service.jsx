@@ -27,8 +27,6 @@ export default function Service() {
     <div className="services-container">
       <h2>Our Services</h2>
 
-      {services.length === 0 && <p>No services available.</p>}
-
       <div className="services-grid">
 
         {services.map((service) => (
