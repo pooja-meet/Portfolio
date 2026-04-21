@@ -29,23 +29,23 @@ export default function Hero() {
         {/* LEFT */}
         <div className="hero_left">
 
-          <h1>{hero.name}</h1>
+          <h1>{hero?.name}</h1>
 
           {/* subtitle */}
-          <h2>{hero.subtitle}</h2>
-          <p>{hero.description}</p>
-          <p>{hero.experience}+ Years Experience</p>
+          <h2>{hero?.subtitle}</h2>
+          <p>{hero?.description}</p>
+          <p>{hero?.experience}+ Years Experience</p>
 
           {/* SOCIAL LINKS */}
           <div className="socials">
 
-            {hero.social?.github && (
+            {hero?.social?.github && (
               <a href={hero.social.github} target="_blank" rel="noreferrer">
                 GitHub
               </a>
             )}
 
-            {hero.social?.netlify && (
+            {hero?.social?.netlify && (
               <a href={hero.social.netlify} target="_blank" rel="noreferrer">
                 Netlify
               </a>
@@ -59,7 +59,7 @@ export default function Hero() {
         <div className="hero_right">
 
           {/* IMAGE FIXED */}
-          {hero.image?.url ? (
+          {hero?.image?.url ? (
             <img
               src={hero.image.url}
               alt={hero.name}
