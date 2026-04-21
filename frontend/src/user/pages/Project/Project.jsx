@@ -5,8 +5,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Project() {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     if (!apiUrl) {
       console.error("API URL not defined");
@@ -21,16 +20,12 @@ export default function Project() {
         setProjects(data);
       } catch (err) {
         console.error(err);
-      } finally {
-        setLoading(false)
-      }
+       }
     };
 
     fetchProjects();
   }, []);
 
-  if (loading) return <p>Loading projects...</p>;
-  if (projects.length === 0) return <p>No projects found</p>;
 
   return (
     <div className="project">
