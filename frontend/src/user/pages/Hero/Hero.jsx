@@ -20,8 +20,6 @@ export default function Hero() {
     }
   };
 
-  if (!hero || !hero.name) return <h2>No Hero Data Found</h2>;
-
   return (
     <section className="hero">
       <div className="hero_container">
