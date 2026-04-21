@@ -18,9 +18,7 @@ export default function SkillList() {
     <div className="skill-list">
       <h2>All Skills</h2>
 
-      {skills.length === 0 ? (
-        <p>No skills found</p>
-      ) : (
+      {skills && (
         <div className="skill-grid">
           {skills.map((skill) => (
             <SkillCard key={skill._id} skill={skill} />
