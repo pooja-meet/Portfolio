@@ -5,7 +5,6 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Hero() {
   const [hero, setHero] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchHero();
@@ -18,12 +17,9 @@ export default function Hero() {
       setHero(data);
     } catch (err) {
       console.log(err);
-    } finally {
-      setLoading(false);
     }
   };
 
-  if (loading) return <h2>Loading...</h2>;
   if (!hero || !hero.name) return <h2>No Hero Data Found</h2>;
 
   return (
