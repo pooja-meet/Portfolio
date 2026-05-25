@@ -23,6 +23,9 @@ app.use(cors({
 }));
 
 // routes
+app.get('/', (req, res) => {
+  res.send({msg:"server is running"})
+})
 app.use('/api/auth', AuthRoutes)
 app.use("/api/hero", heroRoutes);
 app.use("/api/skill", skillRoutes);
