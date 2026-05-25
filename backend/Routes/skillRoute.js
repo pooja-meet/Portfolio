@@ -11,7 +11,7 @@ const upload = multer({ storage });
 // GET skills
 router.get("/", async (req, res) => {
   try {
-    const skills = await Skill.find().sort({ createdAt: 1 });
+    const skills = await Skill.find().sort({ createdAt: -1 });
     res.json(skills);
   } catch (err) {
     res.status(500).json(err);
