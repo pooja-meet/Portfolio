@@ -17,7 +17,7 @@ const cors = require('cors')
 app.use(express.json())
 
 app.use(cors({
-    origin: ["https://itsmahi.netlify.app","https://portfolio-blush-one-84.vercel.app"],
+    origin: ["https://itsmahi.netlify.app","https://portfolio-git-main-pooja-s-projectsapp.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
