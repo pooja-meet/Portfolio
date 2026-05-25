@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
+import './app.css'
 // Layouts
 import UserLayout from './layouts/User/UserLayout'
 import AdminLayout from './layouts/Admin/AdminLayout'
