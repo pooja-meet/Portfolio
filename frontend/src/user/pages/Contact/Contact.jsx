@@ -13,22 +13,29 @@ export default function Contact() {
     });
 
     const [loading, setLoading] = useState(false);
+    const [infoLoading, setInfoLoading] = useState(true); // ✅ Contact info ki loading status track karne ke liye
 
     // ================= FETCH CONTACT INFO =================
     useEffect(() => {
-        if (!apiUrl) return;
+        if (!apiUrl) {
+            setInfoLoading(false);
+            return;
+        }
 
         const fetchInfo = async () => {
             try {
+                setInfoLoading(true);
                 const res = await fetch(`${apiUrl}/contact-info`);
                 const data = await res.json();
                 if (Array.isArray(data)) {
-                    setInfo(data[0]); // 👈 take first object
+                    setInfo(data[0]);
                 } else {
                     setInfo(data);
                 }
             } catch (err) {
                 console.log("Contact info error:", err);
+            } finally {
+                setInfoLoading(false); // ✅ Fetch complete chahe success ho ya error
             }
         };
 
@@ -38,7 +45,7 @@ export default function Contact() {
     // ================= HANDLE INPUT =================
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
-        setSuccess(false)
+        setSuccess(false);
     };
 
     // ================= SUBMIT MESSAGE =================
@@ -75,52 +82,78 @@ export default function Contact() {
             setLoading(false);
         }
     };
+
     useEffect(() => {
         if (success) {
             const timer = setTimeout(() => setSuccess(false), 3000);
             return () => clearTimeout(timer);
         }
     }, [success]);
+
     return (
         <div className="main_div">
             <h1 className="main_heading">Work Together</h1>
 
             <div className="contact-page">
-                {/* LEFT */}
+                {/* LEFT SIDE */}
                 <div className="left_div">
                     <div className="left_heading">
                         <h2>Contact Information</h2>
                     </div>
 
                     <div className="left_container">
-                        {!info ? (
-                            <div className="loading_text">Loading...</div>
-                        ) : (
-                            <div className="info-box">
-                                <p className="description">
-                                    {info.description || "Feel free to reach out for any work or collaboration."}
-                                </p>
+                        {/* ✅ Condition 1: Agar data load ho raha hai toh Skeleton dikhao */}
+                        {infoLoading ? (
+                            <div className="info-box skeleton-contact-box">
+                                {/* Description Skeleton lines */}
+                                <div className="skeleton skeleton_contact_text"></div>
+                                <div className="skeleton skeleton_contact_text short"></div>
 
-                                <div className="info-item">
-                                    <div className="icon"><i className="fa-solid fa-location-dot"></i></div>
-                                    <div className="icon_span">{info.location}</div>
+                                {/* Icon items Skeletons */}
+                                <div className="skeleton_contact_item">
+                                    <div className="skeleton skeleton_contact_icon"></div>
+                                    <div className="skeleton skeleton_contact_span"></div>
                                 </div>
 
-                                <div className="info-item">
-                                    <div className="icon"><i className="fa-solid fa-phone"></i></div>
-                                    <div className="icon_span">{info.phone}</div>
+                                <div className="skeleton_contact_item">
+                                    <div className="skeleton skeleton_contact_icon"></div>
+                                    <div className="skeleton skeleton_contact_span med"></div>
                                 </div>
 
-                                <div className="info-item">
-                                    <div className="icon"><i className="fa-solid fa-envelope"></i></div>
-                                    <div className="icon_span">{info.email}</div>
+                                <div className="skeleton_contact_item">
+                                    <div className="skeleton skeleton_contact_icon"></div>
+                                    <div className="skeleton skeleton_contact_span long"></div>
                                 </div>
                             </div>
+                        ) : (
+                            /* Condition 2: Data load hone ke baad real info */
+                            info && (
+                                <div className="info-box">
+                                    <p className="description">
+                                        {info.description || "Feel free to reach out for any work or collaboration."}
+                                    </p>
+
+                                    <div className="info-item">
+                                        <div className="icon"><i className="fa-solid fa-location-dot"></i></div>
+                                        <div className="icon_span">{info.location}</div>
+                                    </div>
+
+                                    <div className="info-item">
+                                        <div className="icon"><i className="fa-solid fa-phone"></i></div>
+                                        <div className="icon_span">{info.phone}</div>
+                                    </div>
+
+                                    <div className="info-item">
+                                        <div className="icon"><i className="fa-solid fa-envelope"></i></div>
+                                        <div className="icon_span">{info.email}</div>
+                                    </div>
+                                </div>
+                            )
                         )}
                     </div>
                 </div>
 
-                {/* RIGHT */}
+                {/* RIGHT SIDE (Form remains active so user can type instantly) */}
                 <div className="right_div">
                     <div className="right_heading">
                         <h2>For collaboration</h2>
@@ -128,10 +161,7 @@ export default function Contact() {
 
                     <div className="right_container">
                         <div className="form_box">
-
                             <form className="contact-form" onSubmit={handleSubmit}>
-
-
                                 <input
                                     type="text"
                                     name="name"
@@ -172,4 +202,4 @@ export default function Contact() {
             </div>
         </div>
     );
-}
+} 

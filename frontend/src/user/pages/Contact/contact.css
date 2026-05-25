@@ -1,3 +1,53 @@
+/* ===== CONTACT SKELETON SPECIFIC ===== */
+.skeleton-contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skeleton_contact_text {
+    width: 100%;
+    height: 16px;
+    margin-bottom: 4px;
+}
+
+.skeleton_contact_text.short {
+    width: 60%;
+    margin-bottom: 20px;
+    /* Separator spacing before info lines */
+}
+
+.skeleton_contact_item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.skeleton_contact_icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.skeleton_contact_span {
+    height: 16px;
+    border-radius: 4px;
+}
+
+/* Dynamic width sizes for realistic look */
+.skeleton_contact_span {
+    width: 45%;
+}
+
+.skeleton_contact_span.med {
+    width: 35%;
+}
+
+.skeleton_contact_span.long {
+    width: 55%;
+}
+
 /* ===== MAIN CONTAINER ===== */
 .main_div {
     padding: 80px 20px;

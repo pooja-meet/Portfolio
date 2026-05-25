@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Hero.css";
-
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Hero() {
   const [hero, setHero] = useState(null);
-
-  useEffect(() => {
-    fetchHero();
-  }, []);
+  const [loading, setLoading] = useState(true);
 
   const fetchHero = async () => {
     try {
@@ -17,8 +13,42 @@ export default function Hero() {
       setHero(data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchHero();
+  }, []);
+
+  // SKELETON
+  if (loading) {
+    return (
+      <section className="hero">
+        <div className="hero_container">
+
+          {/* LEFT */}
+          <div className="hero_left">
+            <div className="skeleton skeleton_title"></div>
+            <div className="skeleton skeleton_subtitle"></div>
+            <div className="skeleton skeleton_text short"></div>
+
+            <div className="socials">
+              <div className="skeleton skeleton_btn"></div>
+              <div className="skeleton skeleton_btn"></div>
+            </div>
+          </div>
+
+          {/* RIGHT */}
+          <div className="hero_right">
+            <div className="skeleton skeleton_image"></div>
+          </div>
+
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="hero">
@@ -29,12 +59,10 @@ export default function Hero() {
 
           <h1>{hero?.name}</h1>
 
-          {/* subtitle */}
           <h2>{hero?.subtitle}</h2>
-          <p>{hero?.description}</p>
-          <p>{hero?.experience}+ Years Experience</p>
 
-          {/* SOCIAL LINKS */}
+          <p>{hero?.experience}</p>
+
           <div className="socials">
 
             {hero?.social?.github && (
@@ -56,15 +84,13 @@ export default function Hero() {
         {/* RIGHT */}
         <div className="hero_right">
 
-          {/* IMAGE FIXED */}
-          {hero?.image?.url ? (
+          {hero?.image?.url &&
             <img
               src={hero.image.url}
               alt={hero.name}
+              loading="lazy"
             />
-          ) : (
-            <img src="/hero.png" alt="default" />
-          )}
+          }
 
         </div>
 

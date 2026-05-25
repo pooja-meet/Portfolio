@@ -1,4 +1,49 @@
 /* ===== MAIN CONTAINER ===== */
+/* Shimmer / Pulse animation (Jo tumhari already Hero.css me hogi use hi reuse kar sakte ho) */
+.skeleton {
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Skill Specific Skeletons sizes */
+.skeleton_skill_img {
+  width: 600px;
+  height: 250px;
+  border-radius: 50%;
+  /* Card image agar circular hai toh */
+  margin-bottom: 15px;
+}
+
+.skeleton_skill_title {
+  width: 60%;
+  height: 18px;
+  margin-bottom: 8px;
+}
+
+.skeleton_skill_text {
+  width: 80%;
+  height: 14px;
+}
+
+.skeleton_skill_circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 .skill-list {
   padding: 60px 20px;
   background: #0f172a;
