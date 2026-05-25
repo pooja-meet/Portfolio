@@ -63,7 +63,7 @@ export default function Hero() {
               alt={hero.name}
             />
           ) : (
-            <img src="/default.png" alt="default" />
+            <img src="/hero.png" alt="default" />
           )}
 
         </div>
