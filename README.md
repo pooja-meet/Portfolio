@@ -46,7 +46,7 @@ This is my personal portfolio web application built using the **MERN stack (Mong
 
 ## 🌐 Live Demo
 
-https://itsmahi.netlify.app
+https://itsdev13.netlify.app
 ---
 
 ## ⚙️ Installation & Setup
