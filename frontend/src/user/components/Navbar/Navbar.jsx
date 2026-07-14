@@ -17,7 +17,7 @@ export default function Navbar() {
                         <li><Link to="/skill" onClick={closeMenu}>Skill</Link></li>
                         <li><Link to="/service" onClick={closeMenu}>Service</Link></li>
                         <li><Link to="/project" onClick={closeMenu}>Project</Link></li>
-                        <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+                        <li><Link to="/contact" className='highlight' onClick={closeMenu}>Get in Touch</Link></li>
                     </ul>
                 </div>
             </nav>
