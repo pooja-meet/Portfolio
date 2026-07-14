@@ -60,7 +60,7 @@ export default function Hero() {
           <h1>{hero?.name}</h1>
 
           <h2>{hero?.subtitle}</h2>
-
+          <p>{hero?.description}</p>
           <p>{hero?.experience}</p>
 
           <div className="socials">
