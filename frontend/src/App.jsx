@@ -15,7 +15,6 @@ import Contact from './user/pages/Contact/Contact'
 import Protected from './auth/Protected'
 // Admin Pages
 import Login from './admin/pages/Login/Login'
-import Register from './admin/pages/Register/Register'
 import AddSkill from './admin/pages/Addskill/AddSkill'
 import AddProject from './admin/pages/AddProject/AddProject'
 import AddService from './admin/pages/Addservice/AddService'
@@ -51,8 +50,7 @@ const router = createBrowserRouter([
         ]
     },
     // Auth routes
-    { path: '/login', element: <Login /> },
-    { path: '/register', element: <Register /> }
+    { path: '/login', element: <Login /> }
 ])
 
 function App() {
