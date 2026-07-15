@@ -48,9 +48,9 @@
 .user_list_Container .user_highlight {
     color: #0c0d0e;
     background-color: aliceblue;
-    padding: 8px;
+    padding: 6px;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 /* underline animation */
@@ -84,7 +84,7 @@
         position: fixed;
         top: 60px;
         right: -100%;
-        width: 50%;
+        width: 70%;
         height: 100vh;
         background: linear-gradient(67deg, #0b0b0b, #364570);
         display: flex;
@@ -110,7 +110,7 @@
     }
 
     .user_list_Container a {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
 }
