@@ -45,12 +45,12 @@
     font-weight: 500;
 }
 
-.user_list_Container .highlight {
+.user_list_Container .user_highlight {
     color: #0c0d0e;
     background-color: aliceblue;
-    padding: 6px;
+    padding: 8px;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 /* underline animation */
@@ -69,6 +69,10 @@
     width: 100%;
 }
 
+.user_list_Container .user_highlight:hover::after {
+    width: 0;
+}
+
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
@@ -80,7 +84,7 @@
         position: fixed;
         top: 60px;
         right: -100%;
-        width: 70%;
+        width: 50%;
         height: 100vh;
         background: linear-gradient(67deg, #0b0b0b, #364570);
         display: flex;
@@ -101,10 +105,12 @@
 
     .user_list {
         flex-direction: column;
+        align-items: center;
         gap: 30px;
     }
 
     .user_list_Container a {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
+
 }
