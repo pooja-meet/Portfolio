@@ -73,7 +73,7 @@ export default function Hero() {
 
             {hero?.social?.netlify && (
               <a href={hero.social.netlify} target="_blank" rel="noreferrer">
-                Netlify
+                Hire Me
               </a>
             )}
 
