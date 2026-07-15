@@ -94,7 +94,7 @@ export default function Project() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        View Details
+                        View Details  ➡️
                       </a>
                     )}
 
