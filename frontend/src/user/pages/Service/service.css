@@ -142,7 +142,9 @@
   .services-container {
     padding: 60px 5%;
   }
-
+.services-container h2 {
+  font-size: 1.5rem;
+}
   .service-card {
     text-align: center;
   }
