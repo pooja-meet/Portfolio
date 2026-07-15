@@ -9,12 +9,14 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    box-sizing: border-box;
 }
 
 /* LOGO */
 .user_navlogo h2 {
     font-family: 'Pacifico', cursive;
     color: #dde1ec;
+    margin: 0;
 }
 
 /* HAMBURGER */
@@ -26,7 +28,7 @@
     user-select: none;
 }
 
-/* MENU */
+/* MENU DESKTOP */
 .user_list_Container {
     display: flex;
     align-items: center;
@@ -36,6 +38,9 @@
     list-style: none;
     display: flex;
     gap: 25px;
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Taki normal links aur button perfectly center rahein */
 }
 
 .user_list_Container a {
@@ -43,22 +48,16 @@
     color: white;
     position: relative;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.user_list_Container .user_highlight {
-    background-color: rgb(8, 33, 54);
-    padding: 8px;
-    font-weight: 600;
-    border-radius: 8px;
-}
-
-/* underline animation */
+/* NORMAL LINKS UNDERLINE ANIMATION */
 .user_list_Container a::after {
     content: '';
     position: absolute;
     width: 0%;
     height: 2px;
-    background: #0f172a;
+    background: #ffffff; /* Readable color line */
     left: 0;
     bottom: -5px;
     transition: 0.3s;
@@ -68,11 +67,28 @@
     width: 100%;
 }
 
-.user_list_Container .user_highlight:hover::after {
-    width: 0;
+/* FIXED SPECIAL BUTTON: Ab directly a tag par styled hai */
+.user_list_Container .user_highlight {
+    background-color: rgb(8, 33, 54);
+    padding: 8px 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
 }
 
-/* ================= MOBILE ================= */
+.user_list_Container .user_highlight:hover {
+    background-color: rgb(14, 53, 84);
+    transform: scale(1.02); /* Halka sa interactive bump */
+}
+
+/* Button par niche wali extra underline line na aaye uske liye target kiya */
+.user_list_Container .user_highlight::after {
+    display: none;
+}
+
+
+/* ================= MOBILE VIEW (768px and below) ================= */
 @media (max-width: 768px) {
 
     .user_menu-toggle {
@@ -81,39 +97,43 @@
 
     .user_list_Container {
         position: fixed;
-        top: 60px;
+        top: 58px; /* Navbar height se align kiya */
         right: -100%;
-        width: 50%;
-        height: 100vh;
+        width: 60%; 
+        height: calc(100vh - 58px); 
         background: linear-gradient(67deg, #0b0b0b, #364570);
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         padding-top: 40px;
-
         transition: right 0.4s ease-in-out;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
     }
 
     /* OPEN STATE */
     .user_list_Container.active {
         right: 0;
-        top: 57px;
     }
 
     .user_list {
         flex-direction: column;
         align-items: center;
-        margin-top: 60px;
+        gap: 30px;
+        margin-top: 20px;
+        width: 100%;
     }
 
     .user_list_Container a {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        padding: 5px 0;
     }
 
+    /* Mobile view specific styling for Button */
     .user_list_Container .user_highlight {
-        margin-top: 230px;
+        margin-top: 15px; /* Links ke baad thoda gap dynamic space ke liye */
+        text-align: center;
+        width: 80%; /* Mobile side menu ke mutabik wide button */
+        box-sizing: border-box;
     }
-
 }
