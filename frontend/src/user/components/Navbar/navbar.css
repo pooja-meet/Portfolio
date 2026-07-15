@@ -1,4 +1,4 @@
-.navbar {
+.user_navbar {
     position: sticky;
     top: 0;
     left: 0;
@@ -12,13 +12,13 @@
 }
 
 /* LOGO */
-.navlogo h2 {
+.user_navlogo h2 {
     font-family: 'Pacifico', cursive;
     color: #dde1ec;
 }
 
 /* HAMBURGER */
-.menu-toggle {
+.user_menu-toggle {
     display: none;
     font-size: 28px;
     color: white;
@@ -27,32 +27,34 @@
 }
 
 /* MENU */
-.list_Container {
+.user_list_Container {
     display: flex;
     align-items: center;
 }
 
-.list {
+.user_list {
     list-style: none;
     display: flex;
     gap: 25px;
 }
 
-.list_Container a {
+.user_list_Container a {
     text-decoration: none;
     color: white;
     position: relative;
     font-weight: 500;
 }
-.list_Container .highlight {
+
+.user_list_Container .highlight {
     color: #0c0d0e;
     background-color: aliceblue;
     padding: 6px;
     font-weight: 600;
     border-radius: 10px;
 }
+
 /* underline animation */
-.list_Container a::after {
+.user_list_Container a::after {
     content: '';
     position: absolute;
     width: 0%;
@@ -63,18 +65,18 @@
     transition: 0.3s;
 }
 
-.list_Container a:hover::after {
+.user_list_Container a:hover::after {
     width: 100%;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-    .menu-toggle {
+    .user_menu-toggle {
         display: block;
     }
 
-    .list_Container {
+    .user_list_Container {
         position: fixed;
         top: 60px;
         right: -100%;
@@ -92,17 +94,17 @@
     }
 
     /* OPEN STATE */
-    .list_Container.active {
+    .user_list_Container.active {
         right: 0;
         top: 57px;
     }
 
-    .list {
+    .user_list {
         flex-direction: column;
         gap: 30px;
     }
 
-    .list_Container a {
+    .user_list_Container a {
         font-size: 1.2rem;
     }
 }
