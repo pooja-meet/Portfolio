@@ -120,7 +120,7 @@
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        margin-top: 20px;
+        margin-top: 60px;
         width: 100%;
     }
 
@@ -131,9 +131,9 @@
 
     /* Mobile view specific styling for Button */
     .user_list_Container .user_highlight {
-        margin-top: 15px; /* Links ke baad thoda gap dynamic space ke liye */
+        margin-top: 100px; /* Links ke baad thoda gap dynamic space ke liye */
         text-align: center;
-        width: 80%; /* Mobile side menu ke mutabik wide button */
+        width: 70%; /* Mobile side menu ke mutabik wide button */
         box-sizing: border-box;
     }
 }
