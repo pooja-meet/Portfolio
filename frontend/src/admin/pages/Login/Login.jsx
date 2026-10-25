@@ -27,14 +27,14 @@ export default function Login() {
         credentials: "include",
         body: JSON.stringify(user)
       });
-
       const data = await res.json();
-      console.log(data.msg);
+
+      console.log("Login status:", res.status);
+      console.log("Login response:", data);
 
       if (res.ok) {
         alert("Login Successful ✅");
-
-        navigate('/admin'); // redirect to admin panel
+        navigate('/admin');
       } else {
         alert(data.msg || "Login failed ❌");
       }
