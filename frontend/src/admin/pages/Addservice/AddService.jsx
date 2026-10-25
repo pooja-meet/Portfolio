@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import './AddService.css'
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function AddService() {
@@ -7,6 +7,7 @@ export default function AddService() {
   const [editingId, setEditingId] = useState(null);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false)
 
   const [service, setService] = useState({
     title: "",
@@ -122,6 +123,8 @@ export default function AddService() {
 
     setPreview(item.image?.url || null);
     setEditingId(item._id);
+    setShow(true)
+
   };
 
   // ================= DELETE =================
@@ -150,73 +153,115 @@ export default function AddService() {
   };
 
   return (
-    <div className="admin_form">
+    <>
+      <div className="admin_form">
+        <h2 className="hero_heading" onClick={() => setShow(!show)}>
+          {editingId ? "Edit Service Section ✏️" : "Add Service Section"}
+          <span>
+            {show ? "➖" : "➕"}
+          </span>
+        </h2>
+        {/* FORM */}
+        {show && (
+          <form onSubmit={handleSubmit} className="hero-form">
 
-      <h2>{editingId ? "Edit Service ✏️" : "Add Service ➕"}</h2>
+            <div className="form-group">
+              <label>Service Name</label>
 
-      {/* FORM */}
-      <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="title"
+                placeholder="Service Title"
+                value={service.title}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <input
-          type="text"
-          name="title"
-          placeholder="Service Title"
-          value={service.title}
-          onChange={handleChange}
-          required
-        />
 
-        <textarea
-          name="description"
-          placeholder="Service Description"
-          value={service.description}
-          onChange={handleChange}
-          required
-        />
+            <div className="form-group">
+              <label>Service Image</label>
 
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFile}
-        />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFile}
+              />
 
-        {/* PREVIEW */}
-        {preview && (
-          <img src={preview} width="120" alt="preview" />
+              {preview && (
+                <div className="service-image-preview">
+                  <img
+                    src={preview}
+                    alt="preview"
+                  />
+                </div>
+              )}
+            </div>
+
+
+            <div className="form-group full-width">
+              <label>Description</label>
+
+              <textarea
+                name="description"
+                placeholder="Service Description"
+                value={service.description}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+
+            <button
+              type="submit"
+              className="service-submit"
+              disabled={loading}
+            >
+              {loading
+                ? "Saving..."
+                : editingId
+                  ? "Update"
+                  : "Create"
+              }
+            </button>
+
+          </form>
+        )}
+        {/* LIST */}
+        {!show && services && (
+
+          <div className="aservice-list">
+            {services.length > 0 &&
+              <div className="aservice-grid">
+
+                {services.map((item) => (
+                  <div key={item._id} className="aservice-card">
+
+                    {item.image?.url && (
+                      <img src={item.image.url} alt={item.title} width="100%" />
+                    )}
+
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+
+                    <div className="service_actions">
+                      <div className="button">
+                        <button className="edit_btn" onClick={() => handleEdit(item)}>Edit</button>
+                      </div>
+                      <div className="button">
+                        <button className="delete_btn" onClick={() => handleDelete(item._id)}>Delete</button>
+                      </div>
+                    </div>
+
+                  </div>
+                ))}
+
+              </div>
+            }
+          </div>
         )}
 
-        <button disabled={loading}>
-          {loading ? "Saving..." : editingId ? "Update" : "Create"}
-        </button>
-      </form>
-
-      {/* LIST */}
-      <div className="service-list">
-        <h2>All Services</h2>
-
-        <div className="service-grid">
-
-          {services.map((item) => (
-            <div key={item._id} className="service-card">
-
-              {item.image?.url && (
-                <img src={item.image.url} alt={item.title} width="100%" />
-              )}
-
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-
-              <div className="btns">
-                <button onClick={() => handleEdit(item)}>Edit</button>
-                <button onClick={() => handleDelete(item._id)}>Delete</button>
-              </div>
-
-            </div>
-          ))}
-
-        </div>
       </div>
-
-    </div>
+    </>
   );
 }

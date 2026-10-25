@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const os = require('os')
 const connectDb = require('./config/db')
 const AuthRoutes = require('./Routes/authRoute')
 const heroRoutes = require('./Routes/heroRoute');
@@ -11,21 +10,20 @@ const projectRoutes = require('./Routes/projectRoute')
 const contactMsg = require('./Routes/ContactMsgRoute')
 const contactInfo = require('./Routes/ContactInfoRoute')
 
+const cookieParser = require('cookie-parser')
+
 const cors = require('cors')
 
 // middleware
 app.use(express.json())
+app.use(cookieParser())
 
 app.use(cors({
-    origin: ["https://itsdev13.netlify.app","https://portfolio-kwydtqbz0-pooja-s-projectsapp.vercel.app"],
+    origin: ["http://localhost:5173", "https://itsdev13.netlify.app", "https://portfolio-kwydtqbz0-pooja-s-projectsapp.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
-
 // routes
-app.get('/', (req, res) => {
-  res.send({msg:"server is running"})
-})
 app.use('/api/auth', AuthRoutes)
 app.use("/api/hero", heroRoutes);
 app.use("/api/skill", skillRoutes);
@@ -34,31 +32,26 @@ app.use('/api/service', serviceRoutes)
 app.use('/api/contact-msg', contactMsg)
 app.use('/api/contact-info', contactInfo)
 // error handler
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ error: "Something went wrong" });
+
+app.get("/", (req, res) => {
+    res.status(200).json({ msg: "server is running" });
 });
 
-function getLocalIp() {
-    const nets = os.networkInterfaces();
+app.use((err, req, res, next) => {
+    console.error(err.stack);
 
-    for (const name of Object.keys(nets)) {
-        for (const net of nets[name]) {
-            if (net.family === "IPv4" && !net.internal) {
-                return net.address;
-            }
-        }
-    }
-    return "localhost";
-}
-let ip = getLocalIp()
+    res.status(500).json({
+        error: "Something went wrong"
+    });
+});
+
+
 // server
 const PORT = process.env.PORT || 3000
 
 connectDb().then(() =>
-    app.listen(PORT, '0.0.0.0', () => {
+    app.listen(PORT, () => {
         console.log(`server is running at http://localhost:${PORT}`)
-        console.log(`sever is running on http://${ip}:${PORT} `);
     }
     )
 )

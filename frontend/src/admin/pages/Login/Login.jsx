@@ -24,21 +24,19 @@ export default function Login() {
         headers: {
           "Content-Type": 'application/json'
         },
+        credentials: "include",
         body: JSON.stringify(user)
       });
 
       const data = await res.json();
-      console.log(data);
+      console.log(data.msg);
 
       if (res.ok) {
         alert("Login Successful ✅");
 
-        // save token (if backend sends it)
-        localStorage.setItem("token", data.token);
-
         navigate('/admin'); // redirect to admin panel
       } else {
-        alert(data.message || "Login failed ❌");
+        alert(data.msg || "Login failed ❌");
       }
 
     } catch (error) {
@@ -72,6 +70,10 @@ export default function Login() {
           <button type="submit">Login</button>
         </div>
       </form>
+
+      <p>
+        <Link to='/'>Project here</Link>
+      </p>
     </div>
   );
 }

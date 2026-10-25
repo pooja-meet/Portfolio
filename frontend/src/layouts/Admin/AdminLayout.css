@@ -1,0 +1,15 @@
+.admin-layout {
+    min-height: 100vh;
+}
+
+
+/* RIGHT CONTENT */
+
+.admin-content {
+    margin-left: 250px;
+    
+    background-color: rgb(16, 19, 49);
+    width: calc(100% - 250px);
+    /* height: 100vh; */
+    padding:20px 0;
+}

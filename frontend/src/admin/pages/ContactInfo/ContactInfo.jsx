@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-
+import './Contact.css'
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function ContactInfo() {
     const [loading, setLoading] = useState(false);
     const [contactList, setContactList] = useState([]);
     const [editId, setEditId] = useState(null);
+    const [show, setShow] = useState(false)
 
     const [form, setForm] = useState({
         location: "",
@@ -72,7 +73,7 @@ export default function ContactInfo() {
                 location: "",
                 phone: "",
                 email: "",
-                description
+                description: ""
             });
 
             setEditId(null);
@@ -97,6 +98,8 @@ export default function ContactInfo() {
         });
 
         setEditId(item._id);
+        setShow(true)
+
     };
 
     // ================= DELETE =================
@@ -121,72 +124,95 @@ export default function ContactInfo() {
     };
 
     return (
-        <div className="admin_form">
-            <h2>Contact Info</h2>
+        <>
+            <div className="admin_form">
+                <h2 className="hero_heading" onClick={() => setShow(!show)}>
+                    {editId ? "Edit Contact  Section ✏️" : "Add Contact Section"}
+                    <span>
+                        {show ? "➖" : "➕"}
+                    </span>
+                </h2>
+                {/* ================= FORM ================= */}
+                {show && (
 
-            {/* ================= FORM ================= */}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="description"
-                    placeholder="description"
-                    value={form.description}
-                    onChange={handleChange}
-                    required />
-                <input
-                    type="text"
-                    name="location"
-                    placeholder="Location"
-                    value={form.location}
-                    onChange={handleChange}
-                    required
-                />
-
-                <input
-                    type="text"
-                    name="phone"
-                    placeholder="Phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    required
-                />
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={form.email}
-                    onChange={handleChange}
-                    required
-                />
-
-                <button type="submit" disabled={loading}>
-                    {editId ? "Update" : "Save"}
-                </button>
-            </form>
-
-            {/* ================= LIST ================= */}
-            <div className="contact-list" >
-                {/* <h2>All Contact Info</h2> */}
-
-                <div className="skill-grid" >
-                    {contactList.map((item) => (
-                        <div key={item._id} className="contact-card" style={{ background: 'brown', padding: '10px' }}>
-
-                            <h3><i className="fa-solid fa-location-dot"></i> {item.location}</h3>
-                            <p><i className="fa-solid fa-phone"></i> {item.phone}</p>
-                            <p> <i className="fa-solid fa-envelope"></i> {item.email}</p>
-                            <p>{item.description}</p>
-
-                            <div className="contact-footer" style={{ display: 'flex' }}>
-                                <button onClick={() => handleEdit(item)}>Edit</button>
-                                <button onClick={() => handleDelete(item._id)}>Delete</button>
-                            </div>
-
+                    <form onSubmit={handleSubmit} className="hero-form">
+                        <div className="form-group">
+                            <label htmlFor="description">Description</label>
+                            <input
+                                type="text"
+                                name="description"
+                                placeholder="description"
+                                value={form.description}
+                                onChange={handleChange}
+                                required />
                         </div>
-                    ))}
+                        <div className="form-group">
+                            <label htmlFor="location">location</label>
+                            <input
+                                type="text"
+                                name="location"
+                                placeholder="Location"
+                                value={form.location}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="phone no">Phone No</label>
+                            <input
+                                type="text"
+                                name="phone"
+                                placeholder="Phone"
+                                value={form.phone}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={form.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <button type="submit" className="contact-submit" disabled={loading}>
+                            {loading ? "Saving..." : editId ? "Update" : "Create"}
+                        </button>
+                    </form>
+                )}
+
+                {/* ================= LIST ================= */}
+                <div className="acontact-list" >
+                    {!show && contactList.length > 0 &&
+                        <div className="acontact-grid" >
+                            {contactList.map((item) => (
+                                <div key={item._id} className="acontact-card" style={{ background: 'brown', padding: '10px' }}>
+
+                                    <h3><i className="fa-solid fa-location-dot"></i> {item.location}</h3>
+                                    <p><i className="fa-solid fa-phone"></i> {item.phone}</p>
+                                    <p> <i className="fa-solid fa-envelope"></i> {item.email}</p>
+                                    <p>{item.description}</p>
+
+                                    <div className="contact_actions">
+                                        <div className="button">
+                                            <button className="edit_btn" onClick={() => handleEdit(item)}>Edit</button>
+                                        </div>
+                                        <div className="button">
+                                            <button className="delete_btn" onClick={() => handleDelete(item._id)}>Delete</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            ))}
+                        </div>
+                    }
                 </div>
-            </div>
-        </div>
+            </div >
+        </>
     );
 }

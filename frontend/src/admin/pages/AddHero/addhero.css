@@ -1,84 +1,378 @@
-.admin_form {
+
+.admin_hero {
     min-width: 100%;
     min-height: 100%;
-    padding: 20px;
     color: white;
 }
 
-.admin_form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #000;
-}
-
-.admin_form form {
+.hero_heading {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    max-width: 400px;
-    margin: 60px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 5px 10px 10px rgb(3 1 1 / 50%);
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    color: white;
+
+    border-bottom: 1px solid white;
+    
+    padding: 15px 20px;
+    
+    background: #160746;
 }
 
-.admin_form input {
-    padding: 10px;
-    border-radius: 5px;
-    border-color: #9b3b12;
-    outline: none;
-
-}
-.admin_form textarea{
-    padding: 10px;
-}
-.admin_form input[type="file"] {
+.hero_heading span {
+    font-size: 22px;
+    background-color: white;
+    border-radius: 20px;
     padding: 5px;
-    background: #9b3b12;
-    border-radius: 5px;
-    color: white;
-}
-
-.admin_form button {
-    padding: 8px;
-    background: red;
-    color: white;
-    width: 80px;
-    margin: 10px auto;
-    border-radius: 5px;
-    border: none;
+    margin-left: 20px;
     cursor: pointer;
 }
 
-.hero_preview {
-    max-width: 620px;
-    margin: 30px auto;
-    padding: 20px;
+.hero-form {
+    width: 700px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+
+    margin: 50px auto;
+
+    padding: 30px;
+
     background: #ffffff;
-    color: #333;
+
     border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+.form-group {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    gap: 7px;
 }
 
-.left_hero {
-    margin: auto;
-    line-height: 30px;
-    width: 40%;
-    text-align: left;
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
 }
 
-.right_hero {
-    width: 40%;
-    margin: auto;
-}
-
-.right_hero img {
-    border-radius: 50px;
+.form-group input,
+.form-group textarea {
     width: 100%;
-    height: 50%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ed0b3a;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+/* Description full row */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.image-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.image-preview {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.image-preview img {
+    width: 100px;
+    height: 100px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+
+
+/* Submit button */
+.submit-btn {
+    grid-column: 1 / -1;
+
+    width: 120px;
+
+    padding: 11px 20px;
+
+    margin: 5px auto 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #ed0b3a;
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #c9002c;
+}
+
+/* ================================
+   HERO PREVIEW CARD
+================================ */
+
+.hero_preview {
+    width: 700px;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+
+    margin: 13% auto;
+
+    padding: 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ================================
+   IMAGE
+================================ */
+
+.hero_preview_image {
+    width: 180px;
+    min-width: 180px;
+    height: 220px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #f3f3f3;
+}
+
+.hero_preview_image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* ================================
+   CONTENT
+================================ */
+
+.hero_preview_content {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.hero_preview_content h3 {
+    margin: 0 0 5px;
+
+    font-size: 25px;
+
+    color: #222;
+}
+
+.hero_subtitle {
+    margin: 0 0 12px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #ed0b3a;
+}
+
+.hero_description {
+    margin: 0 0 12px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #666;
+}
+
+.hero_experience {
+    margin: 10px 0;
+
+    font-size: 14px;
+
+    color: #444;
+}
+
+
+/* ================================
+   LINKS
+================================ */
+
+.hero_links {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+.hero_links a {
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    background: #f3f3f3;
+
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.hero_links a:hover {
+    background: #ed0b3a;
+
+    color: white;
+}
+
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+
+.hero_actions {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.hero_actions button {
+    padding: 9px 18px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+/* EDIT */
+
+.edit_btn {
+    background: #333;
+}
+
+.edit_btn:hover {
+    background: #111;
+}
+
+
+/* DELETE */
+
+.delete_btn {
+    background: #ed0b3a;
+}
+
+.delete_btn:hover {
+    background: #c9002c;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 700px) {
+
+    .hero_preview {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 20px;
+    }
+
+    .hero_preview_image {
+        width: 150px;
+        min-width: 150px;
+        height: 180px;
+
+        margin: 0 auto;
+    }
+
+    .hero_preview_content {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .hero_preview {
+        padding: 18px;
+    }
+
+    .hero_preview_image {
+        width: 130px;
+        min-width: 130px;
+        height: 160px;
+    }
+
+    .hero_preview_content h3 {
+        font-size: 21px;
+    }
+
+    .hero_links {
+        flex-wrap: wrap;
+    }
+
 }

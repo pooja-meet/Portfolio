@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
+
 // Layouts
 import UserLayout from './layouts/User/UserLayout'
 import AdminLayout from './layouts/Admin/AdminLayout'
@@ -13,6 +14,7 @@ import Contact from './user/pages/Contact/Contact'
 
 //auth 
 import Protected from './auth/Protected'
+
 // Admin Pages
 import Login from './admin/pages/Login/Login'
 import AddSkill from './admin/pages/Addskill/AddSkill'

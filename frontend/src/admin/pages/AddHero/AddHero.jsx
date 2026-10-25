@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import './addhero.css'
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -7,7 +8,7 @@ export default function AddHero() {
   const [hero, setHero] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [preview, setPreview] = useState(null);
-
+  const [show, setShow] = useState(false)
   const [form, setForm] = useState({
     name: "",
     subtitle: "",
@@ -110,9 +111,6 @@ export default function AddHero() {
 
       setPreview(null);
 
-      // ❌ REMOVE THIS LINE (VERY IMPORTANT)
-      setEditMode(false);
-
       fetchHero();
 
     } catch (err) {
@@ -136,6 +134,7 @@ export default function AddHero() {
 
     setPreview(hero.image?.url || null);
     setEditMode(true);
+    setShow(true)
   };
 
   // ================= DELETE =================
@@ -169,105 +168,212 @@ export default function AddHero() {
   };
 
   return (
-    <div className="admin_form">
-      <h2>{editMode ? "Edit Hero ✏️" : "Add Hero"}</h2>
+    <>
 
-      {/* FORM */}
-      <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          placeholder="Name"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+      <div className="admin_hero">
 
-        <input
-          name="subtitle"
-          placeholder="Subtitle"
-          value={form.subtitle}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="description"
-          placeholder="description"
-          value={form.description}
-          onChange={handleChange}
-          required
-        />
+        <h2
+          className="hero_heading"
+          onClick={() => setShow(!show)}
+        >
+          {editMode ? "Edit Hero Section ✏️" : "Add Hero Section"}
 
-        <input
-          type="text"
-          name="experience"
-          placeholder="Experience"
-          value={form.experience}
-          onChange={handleChange}
-        />
+          <span>
+            {show ? "➖" : "➕"}
+          </span>
+        </h2>
 
-        <input type="file" accept="image/*" onChange={handleFile} />
+        {/* FORM */}
+        {show && (
+          <form onSubmit={handleSubmit} className="hero-form">
 
-        {preview && <img src={preview} width="150" alt="preview" />}
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                name="name"
+                placeholder="Enter your name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <input
-          name="netlify"
-          placeholder="Netlify"
-          value={form.netlify}
-          onChange={handleChange}
-        />
+            <div className="form-group">
+              <label>Subtitle</label>
+              <input
+                name="subtitle"
+                placeholder="Enter subtitle"
+                value={form.subtitle}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <input
-          name="github"
-          placeholder="GitHub"
-          value={form.github}
-          onChange={handleChange}
-        />
+            <div className="form-group full-width">
+              <label>Description</label>
+              <textarea
+                name="description"
+                placeholder="Enter description"
+                value={form.description}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        <button disabled={loading}>
-          {loading ? "Saving..." : editMode ? "Update" : "Create"}
-        </button>
-      </form>
+            <div className="form-group">
+              <label>Experience</label>
+              <input
+                type="text"
+                name="experience"
+                placeholder="e.g. 2 Years"
+                value={form.experience}
+                onChange={handleChange}
+              />
+            </div>
 
-      {/* DISPLAY */}
-      {/* DISPLAY */}
-      {hero && (
-        <div className="hero_preview">
-          <h3>{hero.name}</h3>
-          <p>{hero.subtitle}</p>
-          <p>{hero.description}</p>
-          <p>{hero.experience} years</p>
+            <div className="form-group image-group">
+              <label>Hero Image</label>
 
-          {/* IMAGE */}
-          {hero.image?.url && (
-            <img src={hero.image.url} width="150" alt="hero" />
-          )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFile}
+              />
 
-          {/* 🔗 LINKS SECTION */}
-          <div className="hero_links">
-            {hero.social?.github && (
-              <p>
-                GitHub:{" "}
-                <a href={hero.social.github} target="_blank" rel="noreferrer">
-                  click here
-                </a>
+              {preview && (
+                <div className="image-preview">
+                  <img
+                    src={preview}
+                    alt="preview"
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label>Linkdin</label>
+              <input
+                name="netlify"
+                placeholder="Linkdin URL"
+                value={form.netlify}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>GitHub</label>
+              <input
+                name="github"
+                placeholder="GitHub URL"
+                value={form.github}
+                onChange={handleChange}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="submit-btn"
+              disabled={loading}
+            >
+              {loading
+                ? "Saving..."
+                : editMode
+                  ? "Update"
+                  : "Create"
+              }
+            </button>
+
+          </form>
+        )}
+
+        {/* DISPLAY */}
+        {/* DISPLAY */}
+
+        {!show && hero && (
+          <div className="hero_preview">
+
+            {/* IMAGE */}
+            <div className="hero_preview_image">
+              {hero.image?.url && (
+                <img
+                  src={hero.image.url}
+                  alt="hero"
+                />
+              )}
+            </div>
+
+
+            {/* CONTENT */}
+            <div className="hero_preview_content">
+
+              <h3>{hero.name}</h3>
+
+              <p className="hero_subtitle">
+                {hero.subtitle}
               </p>
-            )}
 
-            {hero.social?.netlify && (
-              <p>
-                Netlify:{" "}
-                <a href={hero.social.netlify} target="_blank" rel="noreferrer">
-                  click here
-                </a>
+              <p className="hero_description">
+                {hero.description}
               </p>
-            )}
+
+              {hero.experience && (
+                <p className="hero_experience">
+                  <strong>Experience:</strong>{" "}
+                  {hero.experience}
+                </p>
+              )}
+
+
+              {/* LINKS */}
+              <div className="hero_links">
+
+                {hero.social?.github && (
+                  <a
+                    href={hero.social.github}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    GitHub ↗
+                  </a>
+                )}
+
+                {hero.social?.netlify && (
+                  <a
+                    href={hero.social.netlify}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Netlify ↗
+                  </a>
+                )}
+
+              </div>
+
+
+              {/* BUTTONS */}
+              <div className="hero_actions">
+
+                <button
+                  className="edit_btn"
+                  onClick={handleEdit}
+                >
+                  Edit
+                </button>
+
+                <button
+                  className="delete_btn"
+                  onClick={handleDelete}
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
-
-          {/* BUTTONS */}
-          <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }

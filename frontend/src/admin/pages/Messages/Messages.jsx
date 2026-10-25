@@ -1,27 +1,35 @@
 import { useEffect, useState } from "react";
+import "./Messages.css";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export default function Messages() {
   const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [deletingId, setDeletingId] = useState(null);
 
-  // ================= FETCH =================
+  // Fetch messages
   const fetchMessages = async () => {
     try {
       setLoading(true);
+      setError("");
 
       const res = await fetch(`${apiUrl}/contact-msg`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
+        method: "GET",
+        credentials: "include",
       });
 
       const data = await res.json();
-      setMessages(data);
 
+      if (!res.ok) {
+        throw new Error(data.msg || data.message || "Failed to fetch messages");
+      }
+
+      setMessages(Array.isArray(data) ? data : data.messages || []);
     } catch (err) {
-      console.log(err);
+      console.error("Fetch messages error:", err);
+      setError(err.message || "Unable to load messages");
     } finally {
       setLoading(false);
     }
@@ -31,69 +39,106 @@ export default function Messages() {
     fetchMessages();
   }, []);
 
-  // ================= DELETE =================
+  // Delete message
   const handleDelete = async (id) => {
-    if (!window.confirm("Delete this message?")) return;
+    if (!window.confirm("Are you sure you want to delete this message?")) {
+      return;
+    }
 
     try {
+      setDeletingId(id);
+
       const res = await fetch(`${apiUrl}/contact-msg/${id}`, {
         method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
+        credentials: "include",
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
 
-      alert("Deleted ✅");
-      fetchMessages();
+      if (!res.ok) {
+        throw new Error(data.msg || data.message || "Failed to delete message");
+      }
 
+      setMessages((prev) => prev.filter((msg) => msg._id !== id));
     } catch (err) {
-      alert(err.message);
+      console.error("Delete message error:", err);
+      alert(err.message || "Unable to delete message");
+    } finally {
+      setDeletingId(null);
     }
   };
 
   return (
-    <div className="admin_form">
-      <h2>📩 Messages</h2>
+    <div className="messages-page">
+      <div className="messages-heading">
+        <div>
+          <h2>Messages</h2>
+          <p>Manage messages received from your portfolio.</p>
+        </div>
 
-      {loading && <p>Loading...</p>}
+        <span className="messages-count">
+          {messages.length} {messages.length === 1 ? "Message" : "Messages"}
+        </span>
+      </div>
 
-      {!loading && messages.length === 0 && (
-        <p>No messages found 😐</p>
+      {loading && (
+        <div className="messages-state">
+          <span className="messages-spinner" />
+          <p>Loading messages...</p>
+        </div>
       )}
 
-      <div className="skill-grid">
+      {!loading && error && (
+        <div className="messages-state messages-error">
+          <p>{error}</p>
+          <button type="button" onClick={fetchMessages}>
+            Try Again
+          </button>
+        </div>
+      )}
 
-        {messages.map((msg) => (
-          <div key={msg._id} className="skill-card">
+      {!loading && !error && messages.length === 0 && (
+        <div className="messages-state">
+          <span className="messages-empty-icon">✉</span>
+          <h3>No messages yet</h3>
+          <p>Messages submitted through your contact form will appear here.</p>
+        </div>
+      )}
 
-            <h3>{msg.name}</h3>
-            <p>📧 {msg.email}</p>
+      {!loading && !error && messages.length > 0 && (
+        <div className="messages-grid">
+          {messages.map((msg) => (
+            <article key={msg._id} className="message-card">
+              <div className="message-card-header">
+                <div className="message-avatar">
+                  {(msg.name || "?").charAt(0).toUpperCase()}
+                </div>
 
-            <div style={{
-              background: "#f5f5f5",
-              padding: "10px",
-              borderRadius: "8px",
-              marginTop: "10px"
-            }}>
-              <p>{msg.message}</p>
-            </div>
+                <div className="message-sender">
+                  <h3>{msg.name}</h3>
+                  <a href={`mailto:${msg.email}`}>{msg.email}</a>
+                </div>
+              </div>
 
-            <div className="skill-footer">
-              <button
-                type="button"
-                onClick={() => handleDelete(msg._id)}
-              >
-                Delete
-              </button>
-            </div>
+              <div className="message-content">
+                <span className="message-label">Message</span>
+                <p>{msg.message}</p>
+              </div>
 
-          </div>
-        ))}
-
-      </div>
+              <div className="message-card-footer">
+                <button
+                  type="button"
+                  className="message-delete-btn"
+                  onClick={() => handleDelete(msg._id)}
+                  disabled={deletingId === msg._id}
+                >
+                  {deletingId === msg._id ? "Deleting..." : "Delete Message"}
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

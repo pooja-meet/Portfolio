@@ -9,5 +9,4 @@ const skillSchema = new mongoose.Schema({
     public_id: { type: String, default: "" }// public_id → delete/update ke kaam aata hai
   },
 }, { timestamps: true });
-
 module.exports = mongoose.model("Skill", skillSchema);

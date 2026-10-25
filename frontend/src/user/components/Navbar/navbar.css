@@ -40,7 +40,8 @@
     gap: 25px;
     margin: 0;
     padding: 0;
-    align-items: center; /* Taki normal links aur button perfectly center rahein */
+    align-items: center;
+    /* Taki normal links aur button perfectly center rahein */
 }
 
 .user_list_Container a {
@@ -57,7 +58,8 @@
     position: absolute;
     width: 0%;
     height: 2px;
-    background: #ffffff; /* Readable color line */
+    background: #ffffff;
+    /* Readable color line */
     left: 0;
     bottom: -5px;
     transition: 0.3s;
@@ -79,7 +81,8 @@
 
 .user_list_Container .user_highlight:hover {
     background-color: rgb(14, 53, 84);
-    transform: scale(1.02); /* Halka sa interactive bump */
+    transform: scale(1.02);
+    /* Halka sa interactive bump */
 }
 
 /* Button par niche wali extra underline line na aaye uske liye target kiya */
@@ -97,10 +100,11 @@
 
     .user_list_Container {
         position: fixed;
-        top: 58px; /* Navbar height se align kiya */
+        top: 58px;
+        /* Navbar height se align kiya */
         right: -100%;
-        width: 60%; 
-        height: calc(100vh - 58px); 
+        width: 60%;
+        height: calc(100vh - 58px);
         background: linear-gradient(67deg, #0b0b0b, #364570);
         display: flex;
         flex-direction: column;
@@ -120,7 +124,7 @@
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        margin-top: 60px;
+        margin-top: 20px;
         width: 100%;
     }
 
@@ -131,9 +135,11 @@
 
     /* Mobile view specific styling for Button */
     .user_list_Container .user_highlight {
-        margin-top: 100px; /* Links ke baad thoda gap dynamic space ke liye */
+        margin-top: 15px;
+        /* Links ke baad thoda gap dynamic space ke liye */
         text-align: center;
-        width: 70%; /* Mobile side menu ke mutabik wide button */
+        width: 80%;
+        /* Mobile side menu ke mutabik wide button */
         box-sizing: border-box;
     }
 }

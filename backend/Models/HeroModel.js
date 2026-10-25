@@ -28,4 +28,5 @@ const heroSchema = new mongoose.Schema({
 
 }, { timestamps: true });
 
+
 module.exports = mongoose.model("Hero", heroSchema);

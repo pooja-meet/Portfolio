@@ -1,149 +1,219 @@
+
+/* ===== Admin Navbar ===== */
 .admin_navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
-    width: 100%;
-    background-color: rgb(62, 61, 58);
-    justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    min-height: 76px;
+    padding: 14px 5%;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+    box-sizing: border-box;
 }
 
+/* ===== Logo ===== */
 .admin_navlogo {
-    font-family: cursive;
-    animation: colorChange 6s ease-in-out infinite;
-    padding: 20px 0;
-    font-size: 18px;
-    font-weight: bold;
+    flex-shrink: 0;
 }
 
-@keyframes colorChange {
-
-    0%,
-    100% {
-        color: white;
-    }
-
-    50% {
-        color: red;
-    }
-}
-
-.menu-toggle {
-    display: none;
+.admin_navlogo h2 {
+    margin: 0;
+    color: #4f46e5;
     font-size: 25px;
-    color: white;
-    cursor: pointer;
+    font-weight: 800;
+    letter-spacing: -0.7px;
 }
 
-/* Desktop */
+/* ===== Navigation Container ===== */
 .admin_list_Container {
     display: flex;
-    gap: 40px;
     align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
 }
 
 .admin_list {
-    list-style: none;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
-.admin_list a {
+.admin_list li {
+    margin: 0;
+    padding: 0;
+}
+
+.admin_list li a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 6px;
-    transition: 0.3s;
+    white-space: nowrap;
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
 }
 
-.admin_list a:hover {
-    background-color: red;
+.admin_list li a:hover {
+    color: #4338ca;
+    background: #eef2ff;
 }
 
+.admin_list li a.active {
+    color: #4338ca;
+    background: #e0e7ff;
+}
+
+/* ===== Logout Button ===== */
 .admin_button {
-    padding: 8px 12px;
-    border-radius: 5px;
-    background-color: crimson;
-    color: white;
+    flex-shrink: 0;
+    padding: 11px 20px;
     border: none;
+    border-radius: 9px;
+    background: #dc2626;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.admin_button:hover:not(:disabled) {
+    background: #b91c1c;
+    transform: translateY(-1px);
+}
+
+.admin_button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* ===== Hamburger Button ===== */
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    background: #f8fafc;
+    color: #1e293b;
+    font-size: 23px;
     cursor: pointer;
 }
 
-.admin_button:hover {
-    background-color: darkred;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width:768px) {
-
-    .admin_navlogo {
-        font-size: 15px;
+/* ===== Tablet & Mobile ===== */
+@media (max-width: 1000px) {
+    .admin_navbar {
+        min-height: 70px;
+        padding: 12px 22px;
     }
-
-    /* Desktop */
-    .admin_list_Container {
-        gap: 40px;
-    }
-
-    .admin_list {
-        gap: 0px;
-    }
-
-    .admin_list a {
-        font-size: 12px;
-    }
-
-
-    .admin_button {
-        font-size: 10px;
-        margin-top: 7px;
-        padding: 5px;
-    }
-
-}
-
-/* Extra small */
-@media (max-width:375px) {
 
     .menu-toggle {
-        display: block;
+        display: flex;
+        flex-shrink: 0;
     }
 
     .admin_list_Container {
         position: absolute;
-        top: 60px;
+        top: 100%;
+        left: 0;
         right: 0;
-        background-color: rgb(62, 61, 58);
-        width: 50vw;
-        height: 80vh;
-        padding: 60px 0;
-
+        display: flex;
         flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        max-height: calc(100vh - 70px);
+        padding: 0 22px;
+        overflow-y: auto;
+        background: #ffffff;
+        border-bottom: 1px solid #e2e8f0;
+        box-shadow: 0 12px 20px rgba(15, 23, 42, 0.08);
 
-        /* 👇 Important for animation */
         opacity: 0;
-        transform: translateY(-20px);
         visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
 
-        transition: all 0.4s ease;
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
     }
 
     .admin_list_Container.active {
+        padding-top: 20px;
+        padding-bottom: 22px;
         opacity: 1;
-        transform: translateY(0);
         visibility: visible;
-        display: flex;
+        pointer-events: auto;
+        transform: translateY(0);
     }
 
     .admin_list {
         flex-direction: column;
-        align-items: left;
+        align-items: stretch;
+        gap: 6px;
+        width: 100%;
     }
 
-    .admin_list a {
-        font-size: 14px;
-        display: block;
+    .admin_list li a {
+        padding: 13px 15px;
+        font-size: 15px;
+    }
+
+    .admin_button {
         width: 100%;
-        text-align: left;
+        padding: 13px;
+    }
+}
+
+/* ===== Small Mobile ===== */
+@media (max-width: 480px) {
+    .admin_navbar {
+        padding: 12px 16px;
+    }
+
+    .admin_navlogo h2 {
+        font-size: 22px;
+    }
+
+    .admin_list_Container {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+}
+
+/* ===== Accessibility ===== */
+.menu-toggle:focus-visible,
+.admin_button:focus-visible,
+.admin_list a:focus-visible {
+    outline: 3px solid #818cf8;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .admin_list_Container,
+    .admin_list li a,
+    .admin_button {
+        transition: none;
     }
 }

@@ -1,0 +1,334 @@
+/* =========================
+   CONTACT FORM
+========================= */
+
+.hero-form {
+    width: 700px;
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+
+    padding: 30px;
+
+    background: #fff;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ed0b3a;
+}
+
+.form-group textarea {
+    min-height: 110px;
+
+    resize: vertical;
+}
+
+
+/* Description full width */
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.contact-submit {
+    grid-column: 1 / -1;
+
+    width: 120px;
+
+    padding: 11px 20px;
+
+    margin: 5px auto 0;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #ed0b3a;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.contact-submit:hover {
+    background: #c9002c;
+}
+
+.contact-submit:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   CONTACT LIST
+========================= */
+
+.acontact-list {
+    width: 100%;
+
+    margin-top: 35px;
+}
+
+.acontact-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================
+   CONTACT CARD
+========================= */
+
+.acontact-card {
+    min-height: 250px;
+
+    padding: 25px !important;
+
+    background: #fff !important;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: 0.3s ease;
+}
+
+.acontact-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.acontact-card h3 {
+    margin: 0 0 15px;
+
+    font-size: 21px;
+
+    color: #222;
+}
+
+.acontact-card h3 i {
+    color: #ed0b3a;
+
+    margin-right: 8px;
+}
+
+
+/* =========================
+   PHONE / EMAIL
+========================= */
+
+.acontact-card p {
+    margin: 7px 0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #666;
+}
+
+.acontact-card p i {
+    width: 20px;
+
+    color: #ed0b3a;
+
+    margin-right: 7px;
+}
+
+
+/* Description */
+
+.acontact-card p:last-of-type {
+    margin-top: 15px;
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.contact_actions {
+    display: flex;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin-top: auto;
+}
+
+.contact_actions .button {
+    flex: 1;
+}
+
+.contact_actions button {
+    width: 100%;
+
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* Edit */
+
+.contact_actions .edit_btn {
+    background: #333;
+}
+
+.contact_actions .edit_btn:hover {
+    background: #111;
+}
+
+
+/* Delete */
+
+.contact_actions .delete_btn {
+    background: #ed0b3a;
+}
+
+.contact_actions .delete_btn:hover {
+    background: #c9002c;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .acontact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .hero-form {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        padding: 20px;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .contact-submit {
+        grid-column: auto;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .acontact-card {
+        padding: 18px !important;
+    }
+
+    .acontact-card h3 {
+        font-size: 18px;
+    }
+
+    .contact_actions button {
+        padding: 8px 10px;
+    }
+
+}

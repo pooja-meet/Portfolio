@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 const apiUrl = import.meta.env.VITE_API_URL;
-
+import './AddSkill.css'
 export default function AddSkill() {
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState(null);
   const [editId, setEditId] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [show, setShow] = useState(false)
+
   const [skill, setSkill] = useState({
     name: "",
     items: "",
@@ -106,6 +108,8 @@ export default function AddSkill() {
     });
     setPreview(selectedSkill.image?.url || null)
     setEditId(selectedSkill._id); // 🔥 important
+    setShow(true)
+
   };
   // ================= DELETE =================
   const handleDelete = async (id) => {
@@ -132,72 +136,107 @@ export default function AddSkill() {
     }
   };
   return (
-    <div className="admin_form">
-      <h2>Add Skill</h2>
+    <>
+      <div className="admin_form">
+        <h2 className="hero_heading" onClick={() => setShow(!show)}>
+          {editId ? "Edit Skill Section ✏️" : "Add Skill Section"}
+          <span>
+            {show ? "➖" : "➕"}
+          </span>
+        </h2>
+        {show && (
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Skill Name"
-          value={skill.name}
-          onChange={handleChange}
-          required
-        />
+          <form onSubmit={handleSubmit} className="hero-form">
+            <div className="form-group">
+              <label htmlFor="Skill Name">Skill Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Skill Name"
+                value={skill.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="">Percentage</label>
+              <input
+                type="text"
+                name="percent"
+                placeholder="Percent (0-100)"
+                value={skill.percent}
+                onChange={handleChange}
+                min="0"
+                max="100"
+                required
+              />
+            </div>
+            <div className="form-group full-width">
+              <label htmlFor="">Description</label>
+              <textarea
+                type="text"
+                name="items"
+                placeholder="Items (comma separated)"
+                value={skill.items}
+                onChange={handleChange}
+              />
 
-        <input
-          type="text"
-          name="items"
-          placeholder="Items (comma separated)"
-          value={skill.items}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="percent"
-          placeholder="Percent (0-100)"
-          value={skill.percent}
-          onChange={handleChange}
-          min="0"
-          max="100"
-          required
-        />
-
-        <input type="file" name="" id="" onChange={handleFile} accept="image/**" />
-        {preview && (
-          <img src={preview} alt="preview" width="150" />
+            </div>
+            <div className="form-group image-group">
+              <label htmlFor="Skill Images">Skill Image</label>
+              <input type="file" name="" id="" onChange={handleFile} accept="image/**" />
+              {preview && (
+                <img src={preview} alt="preview" width="150" />
+              )}
+            </div>
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {editId ? "Update" : "Save"}
+            </button>
+          </form>
         )}
-        <button type="submit" disabled={loading}>
-          {editId ? "Update" : "Save"}
-        </button>
-      </form>
 
-      <div className="skill-list">
-        <h2>All Skills</h2>
+        <div className="askill-list">
+          {!show && skills &&
+            <div className="askill-grid">
+              {skills.map((skill) => (
+                <div key={skill._id} className="askill-card">
+                  <div className="askill-left">
 
-        {skills &&
-          <div className="skill-grid">
-            {skills.map((skill) => (
-              <div key={skill._id} className="skill-card">
-                {skill.image && (
-                  <img src={skill.image?.url} alt={skill.name} />
-                )}
+                    {skill.image && (
+                      <img src={skill.image?.url} alt={skill.name} />
+                    )}
 
-                <h3>{skill.name}</h3>
+                    <h3>{skill.name}</h3>
 
-                <p>{skill.items}</p>
+                    <p>{skill.items}</p>
 
-                <div className="skill-footer">
-                  <span>{skill.percent}%</span>
+                  </div>
+                  <div className="footer">
+                    <div
+                      className="circle-progress"
+                      style={{
+                        "--progress": `${skill.percent * 3.6}deg`
+                      }}
+                    >
+                      <div className="circle-progress-inner">
+                        {skill.percent}%
+                      </div>
+                    </div>
+                  </div>
+                  <div className="skill_actions">
+                    <div className="button">
+                      <button className="edit_btn" onClick={() => handleEdit(skill)}>Edit</button>
+                    </div>
+                    <div className="button">
+                      <button className="delete_btn" onClick={() => handleDelete(skill._id)}>Delete</button>
+                    </div>
+                  </div>
                 </div>
-                <button className="button_hero" onClick={() => handleEdit(skill)}>Edit</button>
-                <button onClick={() => handleDelete(skill._id)}>Delete</button>
-              </div>
-            ))}
-          </div>
-        }
+              ))}
+            </div>
+          }
+        </div>
       </div>
-    </div>
+    </>
   );
 }

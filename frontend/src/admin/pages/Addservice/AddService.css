@@ -1,0 +1,339 @@
+/* =========================
+   SERVICE FORM
+========================= */
+
+.hero-form {
+    width: 700px;
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+
+    padding: 30px;
+
+    background: #fff;
+
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ed0b3a;
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/* Description full width */
+
+.full-width {
+    grid-column: 1 /-1;
+}
+
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.service-image-preview {
+    margin-top: 8px;
+}
+
+.service-image-preview img {
+    width: 90px;
+    height: 90px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    border: 1px solid #ddd;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.service-submit {
+    grid-column: 1 / -1;
+
+    width: 120px;
+
+    padding: 11px 20px;
+
+    margin: 5px auto 0;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #ed0b3a;
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.service-submit:hover {
+    background: #c9002c;
+}
+
+.service-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   SERVICE LIST
+========================= */
+
+.aservice-list {
+    width: 100%;
+
+    margin-top: 35px;
+}
+
+.aservice-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px 40px;
+
+    gap: 22px;
+}
+
+
+/* =========================
+   SERVICE CARD
+========================= */
+
+.aservice-card {
+    min-height: 350px;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-direction: column;
+
+    transition: 0.3s ease;
+}
+
+.aservice-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   SERVICE IMAGE
+========================= */
+
+.aservice-card>img {
+    width: 100%;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   SERVICE TITLE
+========================= */
+
+.aservice-card h3 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+
+    color: #222;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.aservice-card p {
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #666;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.service_actions {
+    display: flex;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin-top: auto;
+}
+
+.service_actions .button {
+    flex: 1;
+}
+
+.service_actions button {
+    width: 100%;
+
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* Edit */
+
+.service_actions .edit_btn {
+    background: #333;
+}
+
+.service_actions .edit_btn:hover {
+    background: #111;
+}
+
+
+/* Delete */
+
+.service_actions .delete_btn {
+    background: #ed0b3a;
+}
+
+.service_actions .delete_btn:hover {
+    background: #c9002c;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+
+    .aservice-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .hero-form {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        padding: 20px;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .service-submit {
+        grid-column: auto;
+    }
+
+    .aservice-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .aservice-card {
+        padding: 16px;
+    }
+
+    .aservice-card>img {
+        height: 160px;
+    }
+
+    .service_actions button {
+        padding: 8px 10px;
+    }
+
+}

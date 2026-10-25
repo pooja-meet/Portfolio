@@ -18,19 +18,11 @@ router.get("/", async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
-router.get("/all", async (req, res) => {
-    try {
-        const projects = await Project.find().sort({ createdAt: 1 });
-        res.json(projects);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
 
 /* ================= CREATE PROJECT ================= */
 router.post("/", verifyToken, upload.single("image"), async (req, res) => {
     try {
-        const { title, link, description } = req.body;
+        const { title, link, description} = req.body;
 
         let data = {
             title,
@@ -68,7 +60,7 @@ router.put("/:id", verifyToken, upload.single("image"), async (req, res) => {
         let data = {
             title,
             link,
-            description
+            description,
         };
 
         // new image upload
@@ -88,7 +80,7 @@ router.put("/:id", verifyToken, upload.single("image"), async (req, res) => {
         const updated = await Project.findByIdAndUpdate(
             req.params.id,
             data,
-            { returnDocument: "after" }
+            { new: "true" }
         );
 
         res.json(updated);

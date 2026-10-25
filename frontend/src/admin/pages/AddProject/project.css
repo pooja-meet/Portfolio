@@ -1,77 +1,411 @@
-.form-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 25px;
-    background: #0f172a;
+
+/* =========================
+   PROJECT FORM
+========================= */
+
+.hero-form {
+    width: 700px;
+    max-width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+
+    padding: 30px;
+
+    background: #fff;
+
     border-radius: 12px;
-    color: #fff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
-.form-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #f43f5e;
-}
 
-/* FORM */
-.form-container form {
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-}
-
-/* INPUTS */
-.form-container input {
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-    background: #1e293b;
-    color: #fff;
-    transition: 0.3s;
-}
-
-.form-container input:focus {
-    border: 1px solid #f43f5e;
-    background: #020617;
-}
-
-/* FILE INPUT */
-.form-container input[type="file"] {
-    padding: 8px;
-    background: #1e293b;
-    cursor: pointer;
-}
-
-/* CHECKBOX */
-.form-container label {
-    display: flex;
-    align-items: center;
     gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #ed0b3a;
+}
+
+
+/* =========================
+   FULL WIDTH
+========================= */
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================
+   ORDER INPUT
+========================= */
+
+.hero-form > input[type="number"] {
+    width: 100%;
+
+    height: 45px;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    outline: none;
+
     font-size: 14px;
 }
 
-/* BUTTON */
-.form-container button {
-    padding: 12px;
+.hero-form > input[type="number"]:focus {
+    border-color: #ed0b3a;
+}
+
+
+/* =========================
+   PROJECT IMAGE PREVIEW
+========================= */
+
+.project-image-preview {
+    margin-top: 8px;
+}
+
+.project-image-preview img {
+    width: 100px;
+    height: 80px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    border: 1px solid #ddd;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.project-submit {
+    grid-column: 1 / -1;
+
+    width: 120px;
+
+    padding: 11px 20px;
+
+    margin: 5px auto 0;
+
     border: none;
+
     border-radius: 6px;
-    background: linear-gradient(45deg, #ef4444, #dc2626);
+
+    background: #ed0b3a;
+
     color: white;
-    font-weight: bold;
+
+    font-size: 14px;
+
     cursor: pointer;
-    transition: 0.3s;
+
+    transition: 0.2s;
 }
 
-.form-container button:hover {
-    background: linear-gradient(45deg, #dc2626, #b91c1c);
+.project-submit:hover {
+    background: #c9002c;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    .form-container {
-        margin: 20px;
+.project-submit:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   PROJECT LIST
+========================= */
+
+.aproject-list {
+    width: 100%;
+
+    margin-top: 35px;
+}
+
+.aproject-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================
+   PROJECT CARD
+========================= */
+
+.aproject-card {
+    min-height: 380px;
+
+    padding: 20px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: 0.3s ease;
+}
+
+.aproject-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   PROJECT IMAGE
+========================= */
+
+.aproject-card > img {
+    width: 100%;
+
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   PROJECT TITLE
+========================= */
+
+.aproject-card h3 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+
+    color: #222;
+}
+
+
+/* Description */
+
+.aproject-card h3:nth-of-type(2) {
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.6;
+
+    color: #666;
+
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   VISIT LINK
+========================= */
+
+.aproject-card > a {
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-top: 8px;
+
+    padding: 7px 14px;
+
+    border-radius: 5px;
+
+    background: #f3f3f3;
+
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.aproject-card > a:hover {
+    background: #ed0b3a;
+
+    color: white;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.project_actions {
+    display: flex;
+
+    gap: 10px;
+
+    width: 100%;
+
+    margin-top: auto;
+}
+
+.project_actions .button {
+    flex: 1;
+}
+
+.project_actions button {
+    width: 100%;
+
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* Edit */
+
+.project_actions .edit_btn {
+    background: #333;
+}
+
+.project_actions .edit_btn:hover {
+    background: #111;
+}
+
+
+/* Delete */
+
+.project_actions .delete_btn {
+    background: #ed0b3a;
+}
+
+.project_actions .delete_btn:hover {
+    background: #c9002c;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+
+    .aproject-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .hero-form {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
         padding: 20px;
     }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .project-submit {
+        grid-column: auto;
+    }
+
+    .aproject-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+
+    .aproject-card {
+        padding: 16px;
+    }
+
+    .aproject-card > img {
+        height: 160px;
+    }
+
+    .project_actions button {
+        padding: 8px 10px;
+    }
+
 }
