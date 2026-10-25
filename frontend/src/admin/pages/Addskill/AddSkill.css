@@ -1,4 +1,3 @@
-
 .askill-list {
     width: 100%;
     max-width: 1000px;
@@ -154,4 +153,19 @@
 
 .skill_actions .delete_btn:hover {
     background: #c9002c;
+}
+
+@media (max-width: 600px) {
+    .askill-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+
+    .askill-left img {
+        width: 130px;
+        height: 130px;
+        margin-bottom: 5px;
+    }
+
+
 }
