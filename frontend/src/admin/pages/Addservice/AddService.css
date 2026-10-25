@@ -313,7 +313,10 @@
 
     .aservice-grid {
         grid-template-columns: 1fr;
+        padding: 6px 17px;
+        gap: 32px;
     }
+
 
 }
 
@@ -325,11 +328,15 @@
 @media (max-width: 400px) {
 
     .aservice-card {
-        padding: 16px;
+        padding: 14px;
     }
 
     .aservice-card>img {
         height: 160px;
+    }
+
+    .aservice-card p {
+        margin-bottom: 17px;
     }
 
     .service_actions button {
