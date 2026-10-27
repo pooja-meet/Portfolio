@@ -29,9 +29,6 @@ export default function Login() {
       });
       const data = await res.json();
 
-      console.log("Login status:", res.status);
-      console.log("Login response:", data);
-
       if (res.ok) {
         alert("Login Successful ✅");
         navigate('/admin');
